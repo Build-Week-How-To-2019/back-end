@@ -21,7 +21,7 @@ server.use('/login', login);
 server.use('/users', usersRouter)
 
 
-
+// TEST SERVER
 server.get('/',(req,res) =>{
     res.status(200).json({message:'Server is up'})
 })

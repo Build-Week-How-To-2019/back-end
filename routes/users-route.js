@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const db =require('../data/dbConfig.js');
-const protect=require('../protected/protected.js')
+const db = require('../database/dbConfig.js');
+const protect = require('../middleware/protected.js')
 
 // GET USERS
 router.get('/', protect, (req, res) => {

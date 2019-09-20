@@ -1,3 +1,5 @@
+// CHECKS USER TYPES
+
 module.exports = type => {
   return function(req, res, next) {
     if (req.decodedJwt.type.includes(type)) {

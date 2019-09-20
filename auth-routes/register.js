@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const db =require('../data/dbConfig.js');
 const bcrypt = require('bcryptjs');
-const jwt =require('jsonwebtoken')
-const secrets=require('../config/secret.js')
+
+const generateToken = require('../config/token')
+const Users = require('../models/authModels')
 
 
 router.post('/', (req, res) => {
@@ -14,40 +14,22 @@ router.post('/', (req, res) => {
   if(!user.username || !user.password || !user.type) {
     res.status(422).json({message: 'Please enter Username, Password and choose type of account'})
   } else {
-    db('users')
-    .insert(req.body, 'id')
-    .then(user => {
-      db('users')
-      .where({username: req.body.username})
-      .first()
-      .then(user => {
-        const token = generateToken(user)
-        res.status(200).json({
-          username: user.username, 
+    Users.add(user)
+      .then(newUser => {
+        const token = generateToken(newUser)
+
+        res.status(200).json({  
+          message: `Welcome ${user.username} You have been successfully registered!`,
           id: user.id, 
           type: user.type, token
         })
       })
       .catch(err => {
-        res.send(err.message).json({message:'Unable to register'})
+        res.status(500)
+        .json({ message: "Sorry, but something went wrong while registering" })
       })
-    })
   }
 })
-
-
-// GENERATING TOKEN
-function generateToken(user) {
-  const payload = {
-    subject: user.id,
-    username: user.username,
-    type: user.type
-  }
-   const options = {
-     expiresIn: '2h'
-   }
-    return jwt.sign(payload, secrets.jwtSecret, options)
-}
 
 
 module.exports = router
