@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const register = require('../auth-routes/register.js');
 const login =require('../auth-routes/login.js')
+const usersRouter = require('../routes/users-route');
 
 
 const server=express()
@@ -17,6 +18,7 @@ server.use(cors());
 // ROUTES
 server.use('/register', register);
 server.use('/login', login);
+server.use('/users', usersRouter)
 
 
 
