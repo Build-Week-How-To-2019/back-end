@@ -16,14 +16,15 @@ router.post('/', (req, res) => {
     .first()
     .then(user => {
       if(user && bcrypt.compareSync(password, user.password)) {
-        const token=generateToken(user)
+        const token = generateToken(user)
+
         res.status(200).json({username: user.username, id: user.id, type: user.type, token})
       } else {
         res.status(401).json({message: 'Invalid credentials'})
       }
     })
     .catch(err => {
-      res.status(500).json({error: err, message: 'Error logging in'})
+      res.status(500).json({message: 'Error logging in'})
     })
   }
 })
@@ -39,7 +40,7 @@ function generateToken(user) {
   const options = {
      expiresIn: '2h'
   }
-   return jwt.sign(payload, secrets.jwtSecrets, options)
+   return jwt.sign(payload, secrets.jwtSecret, options)
 }
 
 
