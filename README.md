@@ -63,8 +63,6 @@ _example:_
 
 ```
 
-```
-
 #### Response
 
 ##### 200 (OK success status)
