@@ -7,17 +7,17 @@ const db =require('../database/dbConfig.js');
 
 // POST GUIDE
 router.post("/", (req, res) => {
-  const { title, description } = req.body
+  const { title, description, instructions, user_id, type, likes, card_image } = req.body
   //console.log(title, description)
 
-  if(!title || !description) {
+  if(!title || !description || !user_id) {
     res.status(400).json({
-       message: 'Sorry, all new guides require a title and description'
+       message: 'Sorry, all new guides require a title and description and user_id'
      })
     return
   }
 
-  Guides.addGuide({ title, description })
+  Guides.addGuide({ title, description, instructions, user_id, type, likes, card_image })
   .then(guide => {
       res.status(201).json(guide)
   })
@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 // GET GUIDES
 router.get('/', (req, res) => {
   db('guides')
-  //.join('users','guides.user_id','users.id',)
+  .join('users','guides.user_id','users.id',)
   .select('*')
   .then(guides => {
     res.status(200).json(guides);
@@ -43,18 +43,21 @@ router.get('/', (req, res) => {
 
 // GET BY ID
 router.get('/:id', (req, res) => {
- const id =req.params.id
-db('guides')
-.join('users','guides.user_id','users.id',)
-.select('*')
-.where('guides.id', id)
-.then(guide => {
-  if(guide.length > 0){
-  res.status(200).json(guide)
-  } else {
+  const id =req.params.id
+ 
+  db('guides')
+  .join('users','guides.user_id','users.id',)
+  .select('*')
+  .where('guides.id', id)
+  .then(guide => {
+
+    if(guide.length > 0){
+    res.status(200).json(guide)
+    } else {
     res.status(404).json({message:'the specified Guide does not exist'})
-  }
-})
+    }
+
+  })
  .catch(err => {
    res.status(500).json(err.message)
  })

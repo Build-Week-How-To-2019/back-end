@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
         const token = generateToken(newUser)
 
         res.status(200).json({  
-          message: `Welcome ${user.username} You have been successfully registered!`,
-          id: user.id, 
-          type: user.type, token
+          message: `Welcome ${newUser.username} You have been successfully registered!`,
+          id: newUser.id, 
+          type: newUser.type, token
         })
       })
       .catch(err => {

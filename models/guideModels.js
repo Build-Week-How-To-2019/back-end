@@ -9,8 +9,8 @@ module.exports = {
 
 async function addGuide(newGuide) {
   const [id] = await db('guides').insert(newGuide)
- return getGuides() // returns all guides
- // return findById(id) // return newly added guide only
+  // return getGuides() // returns all guides
+  return findById(id) // return newly added guide only
 }
 
 // RETURNS COUNT
