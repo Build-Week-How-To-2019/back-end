@@ -23,14 +23,106 @@
 
 - [Nodemon](https://www.npmjs.com/package/nodemon): nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected
 
+# Setup
 
-Auth Endpoints
+(# <--- signifies comment)
+In your terminal run:
+
+```
+# Install dependencies
+npm install
+
+# Starts express server using nodemon
+npm run server
+```
+
+# AUTH ROUTES
 --------------------------------------------
 
 | Table    |  Method   |  Endpoint | Required Fields       | Description  |
 |----------|:---------|:----------|:----------------------|:-------------|
 | users    |  Post     | /register|username, password, type |Creates a new user profile, returns the username , id, type and a jsonwebtoken in the body of the response|
 | users    |  Post     |/login|username, password|Uses the username and passowrd sent up to verify the user, if they match, returns the username , id, type and a jsonwebtoken in the body of the response|
+
+## **REGISTER**
+
+### **Registers a user**
+
+_Method Url:_ `/register`
+
+_HTTP method:_ **[POST]**
+_example:_
+
+```
+
+ {
+	 "username": "Alex",
+   "password": "123",
+	 "type": "creator"
+ }
+
+```
+
+```
+
+#### Response
+
+##### 200 (OK success status)
+
+> If you successfully register a user the endpoint will return an HTTP response with a status code `201`,message, and a token as below.
+
+_example:_
+
+```
+{
+  "message": "Welcome Alex You have been successfully registered!",
+  "id": 8,
+  "type": "creator",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo4LCJ1c2VybmFtZSI6IkFsZXgiLCJ0eXBlIjoiY3JlYXRvciIsImlhdCI6MTU2OTA4Nzk3MCwiZXhwIjoxNTY5MDk1MTcwfQ.sYlKNOZ8-r9Gq6s9sxf74xdmKxLOBMKQyYztvdoqH8w"
+}
+
+```
+
+## **LOGIN**
+
+### **Logs a user in**
+
+_Method Url:_ `/login`
+
+_HTTP method:_ **[POST]**
+
+_example:_
+
+```
+{
+  "message": "Welcome, user!"
+},
+{
+  "username": "username"
+  "password": "password",
+}
+
+```
+
+#### Response
+
+##### 200 (OK)
+
+> If you successfully login, the endpoint will return an HTTP response with a status code `200`, message, and a token as below.
+
+_example:_
+
+```
+
+{
+  "username": "Alex",
+  "message": "Welcome Alex!",
+  "id": 7,
+  "type": "creator",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo3LCJ1c2VybmFtZSI6IkFsZXgiLCJ0eXBlIjoiY3JlYXRvciIsImlhdCI6MTU2OTEwODgyNSwiZXhwIjoxNTY5MTE2MDI1fQ.rGtDWtdoY4gxsNgjQSUP056yWrP2l_9y3UKfKF8jEQ4"
+}
+
+```
 
 Status Codes
 
