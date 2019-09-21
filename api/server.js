@@ -3,9 +3,10 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 
-const register = require('../auth-routes/register.js');
+const register = require('../auth-routes/register.js')
 const login =require('../auth-routes/login.js')
-const usersRouter = require('../routes/users-route');
+const usersRouter = require('../routes/users-route')
+const guidesRouter = require('../routes/guides-route')
 
 
 const server=express()
@@ -19,6 +20,7 @@ server.use(cors());
 server.use('/register', register);
 server.use('/login', login);
 server.use('/users', usersRouter)
+server.use('/guides', guidesRouter)
 
 
 // TEST SERVER

@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const db = require('../database/dbConfig.js');
+const Users = require('../models/userModels');
 const protect = require('../middleware/protected.js')
+
+const db = require('../database/dbConfig')
 
 // GET USERS
 router.get('/', protect, (req, res) => {
-  db('users')
+  Users.find()
    .then(users => {
      res.status(200).json(users)
    })
@@ -14,9 +16,9 @@ router.get('/', protect, (req, res) => {
 
 // GET USERS BY ID
 router.get('/:id', protect, (req, res) => {
-  db('users')
-  .where({ id:req.params.id })
-  .first()
+  const { id } =  req.params
+ 
+  Users.findById(id)
   .then(user => {
     if(user) {
       db('guides')
@@ -30,8 +32,9 @@ router.get('/:id', protect, (req, res) => {
     }
   })
   .catch(err => {
-    res.status(500).json({error: err, message: 'Unable to find the user'})
+    res.status(500).json({message: 'Unable to find the user'})
   })
 })
+
 
 module.exports = router

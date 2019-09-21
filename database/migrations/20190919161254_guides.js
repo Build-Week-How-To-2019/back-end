@@ -7,24 +7,27 @@ exports.up = function(knex) {
    .notNullable()
    .unique()
 
-  tbl
+   tbl
+    .string('description', 256)
+    .notNullable()
+ 
+   tbl
    .integer('user_id')
    .unsigned()
    .references('id')
    .inTable('users')
    .onDelete('CASCADE')
    .onUpdate('CASCADE')
- 
+
    tbl
-    .string('description', 256)
-    .notNullable()
+   .string('type',128)
 
    tbl
     .integer('likes')
 
    tbl
     .string('instructions', 256)
-   
+
    tbl
     .string('card_image', 256)
   })

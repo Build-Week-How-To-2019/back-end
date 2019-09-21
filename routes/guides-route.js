@@ -1,0 +1,101 @@
+const router = require('express').Router();
+const Guides = require('../models/guideModels');
+const protect = require('../middleware/protected.js')
+const checkType = require('../middleware/checkType.js')
+
+const db =require('../database/dbConfig.js');
+
+// POST GUIDE
+router.post("/", (req, res) => {
+  const { title, description } = req.body
+  //console.log(title, description)
+
+  if(!title || !description) {
+    res.status(400).json({
+       message: 'Sorry, all new guides require a title and description'
+     })
+    return
+  }
+
+  Guides.addGuide({ title, description })
+  .then(guide => {
+      res.status(201).json(guide)
+  })
+   .catch(() => {
+     res.status(500).json({
+       message: 'Sorry, something went wrong while adding guide'
+     })
+   })
+})
+
+
+// GET GUIDES
+router.get('/', (req, res) => {
+  db('guides')
+  //.join('users','guides.user_id','users.id',)
+  .select('*')
+  .then(guides => {
+    res.status(200).json(guides);
+    })
+    .catch(err => res.send(err.message));
+});
+
+
+// GET BY ID
+router.get('/:id', (req, res) => {
+ const id =req.params.id
+db('guides')
+.join('users','guides.user_id','users.id',)
+.select('*')
+.where('guides.id', id)
+.then(guide => {
+  if(guide.length > 0){
+  res.status(200).json(guide)
+  } else {
+    res.status(404).json({message:'the specified Guide does not exist'})
+  }
+})
+ .catch(err => {
+   res.status(500).json(err.message)
+ })
+})
+
+
+// UPDATE GUIDE
+router.put('/:id', protect, checkType('creator'), (req, res) => {
+  db('guides')
+  .where({ id: req.params.id })
+  .update(req.body)
+  .then(count => {
+    if (count > 0) {
+      res.status(200).json({message:`${count} Guide was updated`})
+    } else {
+      res.status(404).json({message:'the specified Guided does not exist'})
+    }
+  })
+  .catch(err => {
+    res.status(500).json(err.message)
+  })
+});
+
+
+// DELETE ROUTE
+router.delete('/:id', protect, checkType('creator'), (req, res) => {
+  db('guides')
+  .where({ id: req.params.id })
+  .del()
+  .then(count =>{
+    if (count > 0){
+      res.status(200).json({message:`${count} Guide was deleted`})
+    } else {
+      res.status(400).json({message:'the specified Guide does not exist'})
+    }
+  })
+  .catch(err =>{
+    res.status(500).json(err.message)
+  })
+});
+
+
+
+module.exports = router
