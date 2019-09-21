@@ -2,7 +2,8 @@ const db = require('../database/dbConfig.js')
 
 module.exports = {
   addGuide,
-  getGuides,
+  getAll,
+  getById,
   findById
 
 }
@@ -20,9 +21,18 @@ async function addGuide(newGuide) {
 //   .insert(guide)
 // }
 
-function getGuides() {
+function getAll() {
   return db('guides')
-}
+  .join('users','guides.user_id','users.id',)
+  .select('*')
+ }
+
+function getById(id) {
+  return  db('guides')
+  .join('users','guides.user_id','users.id',)
+  .select('*')
+  .where('guides.id', id)
+ }
 
 function findById(id) {
   return db('guides')

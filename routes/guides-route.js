@@ -31,9 +31,7 @@ router.post("/", (req, res) => {
 
 // GET GUIDES
 router.get('/', (req, res) => {
-  db('guides')
-  .join('users','guides.user_id','users.id',)
-  .select('*')
+ Guides.getAll()
   .then(guides => {
     res.status(200).json(guides);
     })
@@ -43,12 +41,9 @@ router.get('/', (req, res) => {
 
 // GET BY ID
 router.get('/:id', (req, res) => {
-  const id =req.params.id
+  const id = req.params.id
  
-  db('guides')
-  .join('users','guides.user_id','users.id',)
-  .select('*')
-  .where('guides.id', id)
+ Guides.getById(id)
   .then(guide => {
 
     if(guide.length > 0){
@@ -65,9 +60,10 @@ router.get('/:id', (req, res) => {
 
 
 // UPDATE GUIDE
-router.put('/:id', protect, checkType('creator'), (req, res) => {
-  db('guides')
-  .where({ id: req.params.id })
+router.put('/:id', protect, (req, res) => {
+  const { id } = req.params
+
+  Guides.findById(id)
   .update(req.body)
   .then(count => {
     if (count > 0) {
@@ -83,9 +79,10 @@ router.put('/:id', protect, checkType('creator'), (req, res) => {
 
 
 // DELETE ROUTE
-router.delete('/:id', protect, checkType('creator'), (req, res) => {
-  db('guides')
-  .where({ id: req.params.id })
+router.delete('/:id', protect, (req, res) => {
+  const { id } = req.params
+
+  Guides.findById(id)
   .del()
   .then(count =>{
     if (count > 0){
