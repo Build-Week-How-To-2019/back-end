@@ -25,7 +25,11 @@ server.use('/guides', guidesRouter)
 
 // TEST SERVER
 server.get('/',(req,res) =>{
-    res.status(200).json({message:'Server is up'})
+    const envMessage = process.env.EMAIL_KEY || "if EMAIL_KEY is not defined in .env send this by default"
+    res.status(200).json({
+        message:'Server is up',
+        envMessage
+    })
 })
 
  module.exports = server;
