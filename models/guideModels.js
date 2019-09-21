@@ -14,6 +14,16 @@ async function addGuide(newGuide) {
   return findById(id) // return newly added guide only
 }
 
+// FOR PostgreSQL
+// async function add(table, data) {
+//   const [item] = await db
+//     .from(table)
+//     .insert(data)
+//     .returning('*'); // for PostgreSQL
+//   return item;
+// }
+
+
 // RETURNS COUNT // KEPT FOR EXAMPLE PURPOSES
 // function addGuide(guide) {
 //   console.log(guide)
@@ -24,13 +34,16 @@ async function addGuide(newGuide) {
 function getAll() {
   return db('guides')
   .join('users','guides.user_id','users.id',)
-  .select('*')
+
+  .select('guides.id', 'guides.title', {username:'users.username'}, 'guides.type', 'guides.description', 'guides.user_id', 'guides.instructions', 'guides.likes', 'guides.card_image')
  }
 
 function getById(id) {
   return  db('guides')
   .join('users','guides.user_id','users.id',)
-  .select('*')
+
+  .select('guides.id', 'guides.title', {username:'users.username'}, 'guides.type', 'guides.description', 'guides.user_id', 'guides.instructions', 'guides.likes', 'guides.card_image')
+
   .where('guides.id', id)
  }
 

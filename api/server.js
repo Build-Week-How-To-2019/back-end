@@ -24,8 +24,9 @@ server.use('/guides', guidesRouter)
 
 
 // TEST SERVER
-server.get('/',(req,res) =>{
-    const envMessage = process.env.EMAIL_KEY || "if EMAIL_KEY is not defined in .env send this by default"
+server.get('/',(req,res) => {
+    // process.env.EMAIL_KEY should be defined only in development // insomnia call will show it heroku wont
+    const envMessage = process.env.EMAIL_KEY || "if EMAIL_KEY is not defined in heroku configs it will show this message by default"
     res.status(200).json({
         message:'Server is up',
         envMessage

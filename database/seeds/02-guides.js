@@ -8,6 +8,7 @@ exports.seed = function(knex) {
         {
           title: "new title",
           user_id: 1,
+          type: 'creator',
           description: "new description",
           likes: 10,
           instructions: "Do this right you dog",
@@ -16,6 +17,7 @@ exports.seed = function(knex) {
         {
           title: "Michael olmalidi",
           user_id: 2,
+          type:'viewer',
           description: "new description",
           likes: 10,
           instructions: "Do this right you dog",
