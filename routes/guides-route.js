@@ -3,7 +3,6 @@ const Guides = require('../models/guideModels');
 const protect = require('../middleware/protected.js')
 const checkType = require('../middleware/checkType.js')
 
-const db =require('../database/dbConfig.js');
 
 // POST GUIDE
 router.post("/", (req, res) => {

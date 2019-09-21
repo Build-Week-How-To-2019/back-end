@@ -14,7 +14,7 @@ async function addGuide(newGuide) {
   return findById(id) // return newly added guide only
 }
 
-// RETURNS COUNT
+// RETURNS COUNT // KEPT FOR EXAMPLE PURPOSES
 // function addGuide(guide) {
 //   console.log(guide)
 //   return db('guides')
