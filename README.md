@@ -6,7 +6,7 @@
 [https://howto-bw.herokuapp.com]
 
 
-###### Production
+# Production
 ---------------------------------------------
 
 - [Express](https://www.npmjs.com/package/express): Fast, unopinionated, minimalist web framework for Node.js
@@ -19,7 +19,7 @@
 - [Helmet](https://www.npmjs.com/package/helmet): Helmet helps you secure your Express apps by setting various HTTP headers
 - [Dotenv](https://www.npmjs.com/package/dotenv): Dotenv is a zero-dependency module that loads environment variables from a .env file
 
-###### Development
+# Development
 
 - [Nodemon](https://www.npmjs.com/package/nodemon): nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected
 
