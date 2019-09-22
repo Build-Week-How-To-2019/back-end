@@ -4,7 +4,7 @@ const protect = require('../middleware/protected.js')
 
 const db = require('../database/dbConfig')
 
-// GET USERS
+// GET ALL USERS
 router.get('/', protect, (req, res) => {
   Users.find()
    .then(users => {
@@ -14,7 +14,7 @@ router.get('/', protect, (req, res) => {
 })
 
 
-// GET USERS BY ID
+// GET USER BY ID
 router.get('/:id', protect, (req, res) => {
   const { id } =  req.params
  

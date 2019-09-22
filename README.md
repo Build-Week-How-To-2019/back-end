@@ -135,8 +135,6 @@ Users Endpoint
 | Table    |  Method   |  Endpoint | required fields       | Description  |
 |----------|:---------|:----------|----------------------|:-------------|
 | users    |  Get     | /users |token labeled as authorization in headers |Returns all existing users data: username, id, type.
-
-| Table    |  Method   |  Endpoint | required fields       | Description  |
 |----------|:---------|:----------|----------------------|:-------------|
 | users    |  Get     | /users:id |token labeled as authorization in headers |Returns the specific user by id, with username, id, type, and all guides related to the user
 
