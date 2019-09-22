@@ -1,14 +1,11 @@
 ## How-To BackEnd API
 --------------------------------------------
-
 ## API Deployed at
----------------------------------------------
 [https://howto-bw.herokuapp.com]
 
 ## Technologies
 
 ### Production
----------------------------------------------
 
 - [Express](https://www.npmjs.com/package/express): Fast, unopinionated, minimalist web framework for Node.js
 - [Bcryptjs](https://www.npmjs.com/package/body-parser): Allows you to store passwords securely in your database
@@ -45,9 +42,9 @@ npm run server
 | users    |  Post     | /register|username, password, type |Creates a new user profile, returns the username , welcome message, id, type and a jsonwebtoken in the body of the response|
 | users    |  Post     |/login|username, password|Uses the username and passowrd sent up to verify the user, if they match, returns the username, welcome message, id, type and a jsonwebtoken in the body of the response|
 
-## **REGISTER**
+### REGISTER
 
-### **Registers a user**
+#### Registers a user
 
 _Method Url:_ `/register`
 
@@ -82,9 +79,9 @@ _example:_
 
 ```
 
-## **LOGIN**
+### LOGIN
 
-### **Logs a user in**
+#### Logs a user in
 
 _Method Url:_ `/login`
 
