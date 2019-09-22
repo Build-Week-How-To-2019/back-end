@@ -155,8 +155,8 @@ Guides Endpoints
 | Table    |  Method   |  Endpoint | required fields       | Description  |
 |----------|:--------- |:----------|:----------------------|:-------------|
 | guides    |  Post    | /guides|title, description, type, user_id, |Posts a new guide to the database. 
-| guides    |  Get     | /guides |returns all of the guides.|
-| guides    |  Get by id     | /guides:id |token labeled as authorization in headers |returns the guide with the specific id.|
+| guides    |  Get     | /guides | N/A |returns all of the guides.
+| guides    |  Get by id     | /guides:id | N/A |returns the guide with the specific id.|
 | guides    |  Put     | /guides:id |token labeled as authorization in headers, user must be type: creator |Edits any field that comes back different from the specified guide.|
 | guides    |  Delete  | /guides:id |token labeled as authorization in headers, user must be type: creator |Deletes the specified guide from the database.|
 
