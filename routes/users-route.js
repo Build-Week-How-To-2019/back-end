@@ -8,7 +8,7 @@ const db = require('../database/dbConfig')
 router.get('/', protect, (req, res) => {
   Users.find()
    .then(users => {
-     res.status(200).json(users)
+      res.status(200).json(users)
    })
     .catch(err => res.send(err))
 })
@@ -22,7 +22,7 @@ router.get('/:id', protect, (req, res) => {
   .then(user => {
     if(user) {
       db('guides')
-      .where({ user_id: req.params.id })
+      .where({ user_id: id })
       .then(guides => {
         user.guides = guides
         res.status(200).json(user)
