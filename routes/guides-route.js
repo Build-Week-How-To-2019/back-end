@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
 });
 
 
-// GET BY ID
+// GET GUIDES BY ID
 router.get('/:id', (req, res) => {
   const id = req.params.id
  
