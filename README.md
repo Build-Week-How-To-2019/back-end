@@ -1,11 +1,11 @@
-# How-To BackEnd API
+## How-To BackEnd API
 --------------------------------------------
 
-# API Deployed at
+## API Deployed at
 ---------------------------------------------
 [https://howto-bw.herokuapp.com]
 
-# Technologies
+## Technologies
 
 ### Production
 ---------------------------------------------
@@ -24,7 +24,7 @@
 
 - [Nodemon](https://www.npmjs.com/package/nodemon): nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected
 
-# Setup
+## Setup
 
 (# <--- signifies comment)
 In your terminal run:
@@ -37,7 +37,7 @@ npm install
 npm run server
 ```
 
-# AUTH ROUTES
+## AUTH ROUTES
 --------------------------------------------
 
 | Table    |  Method   |  Endpoint | Required Fields       | Description  |
