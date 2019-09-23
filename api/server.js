@@ -31,7 +31,7 @@ server.use('/guides', guidesRouter)
 
   // CLOUDINARY
 cloudinary.config({ 
-     CLOUDINARY_URL: process.env.CLOUDINARY_URL
+     CLOUDINARY_URL: process.env.CLOUDINARY_URL // HEROKU REQUIRES TO USE THIS OPTION OF ENV VARIABLES
     // cloud_name: 'zauryelpcamp', 
     // api_key: process.env.CLOUDINARY_API_KEY,  
     // api_secret: process.env.CLOUDINARY_API_SECRET 

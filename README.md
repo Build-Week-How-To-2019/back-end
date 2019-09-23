@@ -129,7 +129,7 @@ Status Codes
 
 
 
-Users Endpoint
+Users Endpoints
 ----------------------------------------------
 
 | Table    |  Method   |  Endpoint | required fields       | Description  |
@@ -162,4 +162,13 @@ Status Codes
 - 401 - If there is no token on the headers of the request, the endpoint will return a response with a status code 401
 - 403 - If the users account doesn't have the correct type, the endpoint will return a response with a status code 403
 - 500 - If there is a server error, the endpoint will return a response with a status code 500.
+
+Cloudinary Endpoints
+----------------------------------------------
+
+| Table    |  Method   |  Endpoint | required fields       | Description  |
+|----------|:---------|:----------|----------------------|:-------------|
+| cloud_images    |  Get     | /images |token labeled as authorization in headers |Returns all existing images data: link, id, guide_id.
+|----------|:---------|:----------|----------------------|:-------------|
+| cloud_images    |  post     | /upload |token labeled as authorization in headers |Returns data from Cloudinary API. Application saves image secure_url to the database.
 
