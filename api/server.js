@@ -31,9 +31,10 @@ server.use('/guides', guidesRouter)
 
   // CLOUDINARY
 cloudinary.config({ 
-    cloud_name: 'zauryelpcamp', 
-    api_key: process.env.CLOUDINARY_API_KEY,  
-    api_secret: process.env.CLOUDINARY_API_SECRET 
+     CLOUDINARY_URL: process.env.CLOUDINARY_URL
+    // cloud_name: 'zauryelpcamp', 
+    // api_key: process.env.CLOUDINARY_API_KEY,  
+    // api_secret: process.env.CLOUDINARY_API_SECRET 
   }); 
   
 
@@ -44,7 +45,7 @@ cloudinary.config({
     cloudinary.uploader.upload(file.tempFilePath, async function(err, result) {
         // console.log("Error", err)
         // console.log("Result", result.secure_url)
-         await db('cloud_images').insert({cloud_image: result.secure_url})
+         await db('cloud_images').insert({ cloud_image: result.secure_url })
          
             res.send({
                 success: true,
