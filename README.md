@@ -135,7 +135,7 @@ Users Endpoints
 | Table    |  Method   |  Endpoint | required fields       | Description  |
 |----------|:---------|:----------|----------------------|:-------------|
 | users    |  Get     | /users |token labeled as authorization in headers |Returns all existing users data: username, id, type.
-|----------|:---------|:----------|----------------------|:-------------|
+|          |          |           |                      |               |                    
 | users    |  Get     | /users:id |token labeled as authorization in headers |Returns the specific user by id, with username, id, type, and all guides related to the user
 
 Status Codes
@@ -169,6 +169,6 @@ Cloudinary Endpoints
 | Table    |  Method   |  Endpoint | required fields       | Description  |
 |----------|:---------|:----------|----------------------|:-------------|
 | cloud_images    |  Get     | /images |token labeled as authorization in headers |Returns all existing images data: link, id, guide_id.
-|----------|:---------|:----------|----------------------|:-------------|
+|          |      |           |         |                                          |
 | cloud_images    |  post     | /upload |token labeled as authorization in headers |Returns data from Cloudinary API. Application saves image secure_url to the database.
 
