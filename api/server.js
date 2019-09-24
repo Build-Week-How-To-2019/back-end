@@ -1,8 +1,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const cloudinary = require('cloudinary').v2;
 const fileupload = require('express-fileupload')
+
+const cloudinary = require('cloudinary').v2;
 const db=require('../database/dbConfig.js')
 
 
@@ -29,9 +30,10 @@ server.use('/login', login);
 server.use('/users', usersRouter)
 server.use('/guides', guidesRouter)
 
+
   // CLOUDINARY
 cloudinary.config({ 
-     CLOUDINARY_URL: process.env.CLOUDINARY_URL // HEROKU REQUIRES TO USE THIS OPTION OF ENV VARIABLES
+     CLOUDINARY_URL: process.env.CLOUDINARY_URL // HEROKU REQUIRES TO USE THIS OPTION FOR ENV VARIABLES
     // cloud_name: 'zauryelpcamp', 
     // api_key: process.env.CLOUDINARY_API_KEY,  
     // api_secret: process.env.CLOUDINARY_API_SECRET 
@@ -53,6 +55,7 @@ cloudinary.config({
             })
      })
 })
+
 
 // GET CLOUD IMAGES
 server.get('/images', (req, res) => {
