@@ -7,7 +7,6 @@ const checkType = require('../middleware/checkType.js')
 // POST GUIDE
 router.post("/", (req, res) => {
   const { title, description, instructions, user_id, type, likes, card_image } = req.body
-  console.log(title, description)
 
   if(!title || !description || !user_id) {
     res.status(400).json({
