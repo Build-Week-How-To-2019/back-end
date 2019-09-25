@@ -34,17 +34,21 @@ module.exports = {
   //   },
   // },
 
-  // production: {
-  //   client: 'pg',
-  //   connection: process.env.DATABASE_URL, 
-  //   useNullAsDefault: true,
-  //   migrations: {
-  //     directory: './database/migrations',
-  //   },
-  //   seeds: {
-  //     directory: './database/seeds',
-  //   },
-  // },
+  production: {
+    //client: 'pg',
+    client: 'sqlite3',
+    connection: {
+      filename: './database/howto.db3',
+    },
+    //connection: process.env.DATABASE_URL, 
+    useNullAsDefault: true,
+    migrations: {
+      directory: './database/migrations',
+    },
+    seeds: {
+      directory: './database/seeds',
+    },
+  },
 
   testing: {
     client: 'sqlite3',
