@@ -35,12 +35,12 @@ module.exports = {
   // },
 
   production: {
-    //client: 'pg',
-    client: 'sqlite3',
-    connection: {
-      filename: './database/howto.db3',
-    },
-    //connection: process.env.DATABASE_URL, 
+     client: 'pg',
+    // client: 'sqlite3',
+    // connection: {
+    //   filename: './database/howto.db3',
+    // },
+    connection: process.env.DATABASEURL, 
     useNullAsDefault: true,
     migrations: {
       directory: './database/migrations',
