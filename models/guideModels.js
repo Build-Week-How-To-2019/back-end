@@ -8,28 +8,13 @@ module.exports = {
 
 }
 
-async function addGuide(newGuide) {
-  const [id] = await db('guides').insert(newGuide)
-  // return getGuides() // returns all guides
-  return findById(id) // return newly added guide only
-}
 
 // FOR PostgreSQL
-// async function add(table, data) {
-//   const [item] = await db
-//     .from(table)
-//     .insert(data)
-//     .returning('*'); // for PostgreSQL
-//   return item;
-// }
-
-
-// RETURNS COUNT // KEPT FOR EXAMPLE PURPOSES
-// function addGuide(guide) {
-//   console.log(guide)
-//   return db('guides')
-//   .insert(guide)
-// }
+async function addGuide(newGuide) {
+  const [item] = await db('guides').insert(newGuide)
+    .returning('*')
+  return item
+}
 
 function getAll() {
   return db('guides')
@@ -54,5 +39,25 @@ function findById(id) {
 }
 
 
+//IF USING SQLITE
+// async function addGuide(newGuide) {
+//   const [id] = await db('guides').insert(newGuide)
+//   // return getGuides() // returns all guides
+//   return findById(id) // return newly added guide only
+// }
 
+// IF USING PostgreSQL
+// async function add(table, data) {
+//   const [item] = await db
+//     .from(table)
+//     .insert(data)
+//     .returning('*'); // for PostgreSQL
+//   return item;
+// }
 
+// RETURNS COUNT // KEPT FOR EXAMPLE PURPOSES
+// function addGuide(guide) {
+//   console.log(guide)
+//   return db('guides')
+//   .insert(guide)
+// }

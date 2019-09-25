@@ -7,7 +7,7 @@ const checkType = require('../middleware/checkType.js')
 // POST GUIDE
 router.post("/", (req, res) => {
   const { title, description, instructions, user_id, type, likes, card_image } = req.body
-  //console.log(title, description)
+  console.log(title, description)
 
   if(!title || !description || !user_id) {
     res.status(400).json({
@@ -20,9 +20,10 @@ router.post("/", (req, res) => {
   .then(guide => {
       res.status(201).json(guide)
   })
-   .catch(() => {
+   .catch((err) => {
+     console.log(err)
      res.status(500).json({
-       message: 'Sorry, something went wrong while adding guide'
+        message: 'Sorry, something went wrong while adding guide'
      })
    })
 })

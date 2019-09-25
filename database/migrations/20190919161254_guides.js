@@ -26,7 +26,7 @@ exports.up = function(knex) {
     .integer('likes')
 
    tbl
-    .string('instructions', 256)
+    .string('instructions', 812)
 
    tbl
     .string('card_image', 256)

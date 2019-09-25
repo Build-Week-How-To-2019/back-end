@@ -7,9 +7,12 @@ module.exports = {
   findById
 }
 
+
+// IF USING PostgreSQL
 async function add(user) {
-  const [id] = await db('users').insert(user)
-  return findById(id)
+  const [item] = await db('users').insert(user)
+    .returning('*')
+  return item
 }
 
 function find() {
@@ -27,3 +30,8 @@ function findById(id) {
 }
 
 
+// IF USING SQLITE 
+// async function add(user) {
+//   const [id] = await db('users').insert(user)
+//   return findById(id)
+// }

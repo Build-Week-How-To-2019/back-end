@@ -50,7 +50,6 @@ exports.seed = function(knex) {
          instructions: "Ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.  It solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles.  Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.",
          card_image: "https://images.pexels.com/photos/221027/pexels-photo-221027.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
        },
-  
        {
          title: "How To Paint Your Home",
          user_id: 6,

@@ -1,5 +1,6 @@
 module.exports = {
 
+     // SQLITE
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -19,6 +20,19 @@ module.exports = {
       }
     }
   },
+
+  // POSTGRE SQL
+  // development: {
+  //   client: 'pg',
+  //   useNullAsDefault: true,
+  //   connection: "link to postgre sql db",
+  //   migrations: {
+  //     directory: './database/migrations',
+  //   },
+  //   seeds: {
+  //     directory: './database/seeds',
+  //   },
+  // },
 
   production: {
     client: 'pg',
