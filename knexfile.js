@@ -21,11 +21,11 @@ module.exports = {
     }
   },
 
-  // POSTGRE SQL
+  //POSTGRE SQL
   // development: {
   //   client: 'pg',
   //   useNullAsDefault: true,
-  //   connection: "link to postgre sql db",
+  //   connection: process.env.DATABASE_URL,
   //   migrations: {
   //     directory: './database/migrations',
   //   },

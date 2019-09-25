@@ -39,7 +39,7 @@ function findById(id) {
 }
 
 
-//IF USING SQLITE
+// IF USING SQLITE
 async function addGuide(newGuide) {
   const [id] = await db('guides').insert(newGuide)
   // return getGuides() // returns all guides
