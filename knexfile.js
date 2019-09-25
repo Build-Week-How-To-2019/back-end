@@ -40,7 +40,7 @@ module.exports = {
     // connection: {
     //   filename: './database/howto.db3',
     // },
-    connection: process.env.DATABASE_URL, 
+    connection: process.env.HEROKU_POSTGRESQL_OLIVE_URL, 
     useNullAsDefault: true,
     migrations: {
       directory: './database/migrations',
