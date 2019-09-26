@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
       })
       .catch(err => {
         res.status(500)
-        .json({ message: "Sorry, but something went wrong while registering" })
+        .json({ err, message: "Sorry, but something went wrong while registering" })
       })
   }
 })

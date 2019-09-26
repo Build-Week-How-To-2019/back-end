@@ -35,7 +35,12 @@ router.get('/', (req, res) => {
   .then(guides => {
     res.status(200).json(guides);
     })
-    .catch(err => res.send(err.message));
+    .catch(err => {
+      res.status(500).json({
+       message: 'Sorry, something went wrong while getting guides',
+       err
+     })
+    })
 });
 
 
@@ -49,12 +54,15 @@ router.get('/:id', (req, res) => {
     if(guide.length > 0){
     res.status(200).json(guide)
     } else {
-    res.status(404).json({message:'the specified Guide does not exist'})
+    res.status(404).json({ message:'the specified Guide does not exist' })
     }
 
   })
  .catch(err => {
-   res.status(500).json(err.message)
+   res.status(500).json({
+    message: 'Sorry, something went wrong while getting guide',
+    err
+  })
  })
 })
 
