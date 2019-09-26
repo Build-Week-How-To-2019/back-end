@@ -10,19 +10,19 @@ module.exports = {
 
 
 // IF USING SQLITE
-async function addGuide(newGuide) {
-  const [id] = await db('guides').insert(newGuide)
-  // return getGuides() // returns all guides
-  return findById(id) // return newly added guide only
-}
+// async function addGuide(newGuide) {
+//   const [id] = await db('guides').insert(newGuide)
+//   // return getGuides() // returns all guides
+//   return findById(id) // return newly added guide only
+// }
 
 
 // IF USING PostgreSQL
-// async function addGuide(newGuide) {
-//   const [item] = await db('guides').insert(newGuide)
-//     .returning('*')
-//   return item
-// }
+async function addGuide(newGuide) {
+  const [item] = await db('guides').insert(newGuide)
+    .returning('*')
+  return item
+}
 
 function getAll() {
   return db('guides')
