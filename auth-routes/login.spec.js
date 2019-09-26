@@ -1,31 +1,32 @@
-const request = require('supertest')
-const server = require('../api/server')
 const db = require('../database/dbConfig.js')
 
 describe('Post to /login', () => {
     
  // LOGIN TEST
- describe('Login', () => {
-  const credentials = { username: "user", password: "123" };   
+ describe('Login', () => { 
 
-  it('should return a successful status code', () => {
-      return request(server)
-      .post('/login')
-      .send(credentials)
-      .then(res => {
-          expect(res.status).toBe(200)
-      })
-  })
+  afterEach(async () => {
+    await db('users').delete();
+  });
 
-  it('should return a welcome message', () => {
-      const message = "Welcome user! Token"
-      
-      return request(server)
-      .post('/login')
-      .send(credentials)
-      .then(res => {
-          expect(res.body.message).toEqual(message)
+
+    it('should insert provided user', async () => {
+      await db('users').insert({ username: "user123", password: "123", type: "creator",});
+
+      const res = await db('users');
+
+      expect(res).toHaveLength(1);
+    });
+
+
+    it('should return an array', async () => {
+        await db('users').insert({ 
+           username:'test', password:'pass', type:'creator'
+        })
+  
+        const res = await db('users');
+  
+        expect(Array.isArray(res)).toBe(true)
       })
-    })
    })
 })
