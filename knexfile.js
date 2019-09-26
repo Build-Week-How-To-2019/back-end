@@ -35,12 +35,12 @@ module.exports = {
   // },
 
   production: {
-    // client: 'sqlite3',
-    // connection: {
-    //   filename: './database/howto.db3',
-    // },
-    client: 'pg',
-    connection: process.env.HEROKU_POSTGRESQL_OLIVE_URL, 
+    client: 'sqlite3',
+    connection: {
+      filename: './database/howto.db3',
+    },
+    // client: 'pg',
+    // connection: process.env.HEROKU_POSTGRESQL_OLIVE_URL, 
     useNullAsDefault: true,
     migrations: {
       directory: './database/migrations',
