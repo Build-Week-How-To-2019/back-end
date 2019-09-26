@@ -91,9 +91,6 @@ _example:_
 
 ```
 {
-  "message": "Welcome, user!"
-},
-{
   "username": "username"
   "password": "password",
 }
